@@ -47,11 +47,12 @@ Analyzing large volumes of textual data manually is inefficient and error-prone.
 
 ##  📊  Results
 
-| Model               | Precision (macro) | Recall (macro) | Macro F1 | Weighted F1 |
-|---------------------|------------------|----------------|----------|-------------|
-| Logistic Regression | 0.5315           | 0.5512         | 0.5337   | 0.6195      |
-| Multinomial NB      | 0.5631           | 0.5012         | 0.5197   | 0.6546      |
-| Linear SVC          | 0.5646           | 0.5680         | 0.5626   | 0.6664      |
+| Model                   | Accuracy   | Precision (macro) | Recall (macro) | Macro F1   | Weighted F1 | Notes                                           |
+| ----------------------- | ---------- | ----------------- | -------------- | ---------- | ----------- | ----------------------------------------------- |
+| **Linear SVC ⭐**        | **67.14%** | **0.5646**        | **0.5680**     | **0.5626** | **0.6664**  | Best overall balance, strong minority handling  |
+| Logistic Regression     | 64.77%     | 0.5315            | 0.5512         | 0.5337     | 0.6195      | Solid baseline, weaker minority recall          |
+| Multinomial Naïve Bayes | 64.77%     | 0.5631            | 0.5012         | 0.5197     | 0.6546      | Strong on majority class, biased toward neutral |
+
 
 **Interpretation:**  
 - **Linear SVC** achieved the highest Macro-F1 score (0.5626), indicating the best balanced performance across all sentiment classes, including minority classes.
@@ -74,6 +75,13 @@ Analyzing large volumes of textual data manually is inefficient and error-prone.
 **Data Cleaning Impact**: Lowercasing, removing noise (URLs, mentions, punctuation), tokenization, stopword removal, and lemmatization improved model accuracy significantly.
 
 ---
+## 🧩  Challenges
+    -Strong class imbalance (neutral dominates)
+
+    -Overlapping language between neutral & positive
+
+    -Minority class detection (negative sentiment)
+
 
 ## ✨ Recommendations
 1. Address class imbalance using oversampling, undersampling, or class-weighted models.
